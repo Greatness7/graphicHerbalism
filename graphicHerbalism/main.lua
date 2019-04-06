@@ -22,10 +22,13 @@ mwse.log("[Graphic Herbalism] Initialized Version 1.0")
 
 -- Detect if the reference is a valid herbalism subject.
 local function isHerb(ref)
-	return (ref and ref.object.organic
-			and not ref.object.script
-			and not config.blocked[ref.id:lower()]
-			)
+	if ref and ref.object.organic then
+		local id = ref.id:lower()
+		if config.blacklist[id] then return false end
+		if config.whitelist[id] then return true end
+		return (ref.object.script == nil)
+	end
+	return false
 end
 
 
