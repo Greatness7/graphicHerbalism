@@ -8,7 +8,7 @@ end
 local function getHerbalismObjects()
 	local list = {}
 	for obj in tes3.iterateObjects(tes3.objectType.container) do
-		if obj.organic and not obj.script then
+		if obj.organic then
 			list[#list+1] = obj.id:lower()
 		end
 	end
