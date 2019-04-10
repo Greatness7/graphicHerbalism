@@ -65,7 +65,7 @@ return {
             sidebarComponents = {
                 {
                     class = "MouseOverInfo",
-                    text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    text = "MWSE Graphic Herbalism Version 1.0.",
                 },
                 {
                     class = "Category",
@@ -108,7 +108,7 @@ return {
         {
             label = "Blacklist",
             class = "ExclusionsPage",
-            description = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+            description = "All organic containers are treated like flora. Guild chests are blacklisted by default, as are several TR containers. Others can be added manually in this menu.",
             variable = {
                 id = "blacklist",
                 class = "TableVariable",
@@ -121,7 +121,7 @@ return {
         {
             label = "Whitelist",
             class = "ExclusionsPage",
-            description = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+            description = "Scripted containers are automatically skipped, but can be enabled in this menu. Containers altered by Piratelord's Expanded Sounds are whitelisted by default. Be careful about whitelisting containers using OnActivate, as that can break their scripts.",
             variable = {
                 id = "whitelist",
                 class = "TableVariable",
