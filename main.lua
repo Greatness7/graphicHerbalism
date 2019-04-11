@@ -20,6 +20,19 @@ local quickloot = include("QuickLoot.interop") or {}
 mwse.log("[Graphic Herbalism] Initialized Version 1.0")
 
 
+-- Register the GUI IDs for our custom tooltips feature.
+local GUI_ID = {}
+event.register("initialized", function()
+    GUI_ID.parent = tes3ui.registerID("GH_Tooltip_Parent")
+    GUI_ID.weight = tes3ui.registerID("GH_Tooltip_Weight")
+    GUI_ID.value = tes3ui.registerID("GH_Tooltip_Value")
+    GUI_ID[1] = tes3ui.registerID("GH_Tooltip_Effect1")
+    GUI_ID[2] = tes3ui.registerID("GH_Tooltip_Effect2")
+    GUI_ID[3] = tes3ui.registerID("GH_Tooltip_Effect3")
+    GUI_ID[4] = tes3ui.registerID("GH_Tooltip_Effect4")
+end)
+
+
 -- Detect if the reference is a valid herbalism subject.
 local function isHerb(ref)
     if ref and ref.object.organic then
@@ -200,32 +213,32 @@ local function onTooltipDrawn(e)
     local count = getVisibleEffectsCount()
     for ingred in getIngredients(ref.object.inventory) do
         --
-        local parent = e.tooltip:createBlock{}
+        local parent = e.tooltip:createBlock{id=GUI_ID_GH_Tooltip_Parent}
         parent.flowDirection = "top_to_bottom"
         parent.childAlignX = 0.5
         parent.autoHeight = true
         parent.autoWidth = true
 
-        local label = parent:createLabel{text=string.format("Weight: %.2f", ingred.weight)}
+        local label = parent:createLabel{id=GUI_ID.weight, text=string.format("Weight: %.2f", ingred.weight)}
         label.wrapText = true
 
-        local label = parent:createLabel{text=string.format("Value: %d", ingred.value)}
+        local label = parent:createLabel{id=GUI_ID.value, text=string.format("Value: %d", ingred.value)}
         label.wrapText = true
 
         for i = 1, 4 do
             local effect = tes3.getMagicEffect(ingred.effects[i])
             local target = math.max(ingred.effectAttributeIds[i], ingred.effectSkillIds[i])
 
+            local block = parent:createBlock{id=GUI_ID[i]}
+            block.autoHeight = true
+            block.autoWidth = true
+
             if effect == nil then
                 -- pass
             elseif i > count then
-                local label = parent:createLabel{text="?"}
+                local label = block:createLabel{text="?"}
                 label.wrapText = true
             else
-                local block = parent:createBlock{}
-                block.autoHeight = true
-                block.autoWidth = true
-
                 local image = block:createImage{path=("icons\\" .. effect.icon)}
                 image.wrapText = false
                 image.borderLeft = 4
