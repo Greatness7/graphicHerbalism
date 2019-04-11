@@ -273,6 +273,7 @@ local function updateBlacklist()
             and obj.script == nil
             and #obj.inventory > 0
             and config.blacklist[id] == nil
+            and config.whitelist[id] == nil
             )
         then
             if (id:find("barrel")
