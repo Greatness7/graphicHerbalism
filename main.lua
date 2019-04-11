@@ -3,10 +3,6 @@
     By Greatness7
 --]]
 
-local config = require("graphicHerbalism.config")
-local quickloot = include("QuickLoot.interop") or {}
-
-
 -- Make sure we have an up-to-date version of MWSE.
 if (mwse.buildDate == nil) or (mwse.buildDate < 20190405) then
     event.register("initialized", function()
@@ -17,6 +13,10 @@ if (mwse.buildDate == nil) or (mwse.buildDate < 20190405) then
     end)
     return
 end
+
+
+local config = require("graphicHerbalism.config")
+local quickloot = include("QuickLoot.interop") or {}
 mwse.log("[Graphic Herbalism] Initialized Version 1.0")
 
 
