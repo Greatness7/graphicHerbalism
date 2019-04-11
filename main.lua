@@ -263,3 +263,28 @@ local function registerModConfig()
     mwse.registerModConfig(mcmData.name, modData or {onCreate=placeholderMCM})
 end
 event.register("modConfigReady", registerModConfig)
+
+
+-- Autodetect blacklist candidates. Not perfect, but is better than nothing.
+local function updateBlacklist()
+    for obj in tes3.iterateObjects(tes3.objectType.container) do
+        local id = obj.id:lower()
+        if (obj.organic
+            and obj.script == nil
+            and #obj.inventory > 0
+            and config.blacklist[id] == nil
+            )
+        then
+            if (id:find("barrel")
+                or id:find("chest")
+                or id:find("crate")
+                or id:find("sack")
+                or getIngredients(obj.inventory)() == nil)
+            then
+                mwse.log('[Graphic Herbalism] Invalid container "%s" added to blacklist.', id)
+                config.blacklist[id] = true
+            end
+        end
+    end
+end
+event.register("initialized", updateBlacklist)
