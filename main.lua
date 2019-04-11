@@ -85,7 +85,7 @@ local function reportTheft(ref, value)
     if not owner then return end
 
     local rank = owner.playerJoined and owner.playerRank
-    if rank and (rank >= ref.attachments["variables"].requirement) then
+    if rank and (rank >= ref.attachments.variables.requirement) then
         return
     end
 
