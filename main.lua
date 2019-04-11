@@ -213,7 +213,7 @@ local function onTooltipDrawn(e)
     local count = getVisibleEffectsCount()
     for ingred in getIngredients(ref.object.inventory) do
         --
-        local parent = e.tooltip:createBlock{id=GUI_ID_GH_Tooltip_Parent}
+        local parent = e.tooltip:createBlock{id=GUI_ID.parent}
         parent.flowDirection = "top_to_bottom"
         parent.childAlignX = 0.5
         parent.autoHeight = true
