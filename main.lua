@@ -239,7 +239,7 @@ local function onTooltipDrawn(e)
         break
     end
 end
-event.register("uiObjectTooltip", onTooltipDrawn, {priority=1})
+event.register("uiObjectTooltip", onTooltipDrawn, {priority=110})
 
 
 -- Create a placeholder MCM page if the user doesn't have easyMCM installed.
