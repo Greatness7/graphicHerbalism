@@ -1,5 +1,5 @@
 return mwse.loadConfig("graphicHerbalism") or {
-    volume = 50,
+    volume = 100,
     showTooltips = true,
     blacklist = {
         -- vanilla content
