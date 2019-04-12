@@ -152,7 +152,7 @@ local function onActivate(e)
     -- claim this event
     return false
 end
-event.register("activate", onActivate, {priority=1})
+event.register("activate", onActivate, {priority=200})
 
 
 -- Iterate over an inventory's ingredients, including inside leveled lists.
@@ -259,7 +259,7 @@ local function onTooltipDrawn(e)
         break
     end
 end
-event.register("uiObjectTooltip", onTooltipDrawn, {priority=110})
+event.register("uiObjectTooltip", onTooltipDrawn, {priority=200})
 
 
 -- Create a placeholder MCM page if the user doesn't have easyMCM installed.
