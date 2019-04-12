@@ -77,19 +77,26 @@ end
 
 
 -- Calls "updateHerbReferences" when a new cell is loaded.
-local dayCellWasLoaded
+local currentCells
 local function onCellChanged()
+    local cells = tes3.getActiveCells()
     local today = tes3.getGlobal("DaysPassed")
-    for i, cell in ipairs(tes3.getActiveCells()) do
-        if today > (dayCellWasLoaded[cell] or 0) then
-            dayCellWasLoaded[cell] = today
+
+    for i, cell in ipairs(cells) do
+        local day = currentCells[cell]
+        if today > (day or 0) then
             updateHerbReferences(cell)
+            cells[cell] = today
+        else -- cell is already loaded
+            cells[cell] = day
         end
     end
+
+    currentCells = cells
 end
 event.register("cellChanged", onCellChanged)
 event.register("calcRestInterrupt", onCellChanged)
-event.register("loaded", function() dayCellWasLoaded = {}; onCellChanged() end)
+event.register("loaded", function() currentCells = {}; onCellChanged() end)
 
 
 -- Called when picking a herb, trigger theft if necessary.
