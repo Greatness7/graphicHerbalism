@@ -35,11 +35,12 @@ end)
 
 -- Detect if the reference is a valid herbalism subject.
 local function isHerb(ref)
-    if ref and ref.object.organic then
-        local id = ref.id:lower()
+    local obj = ref and ref.object
+    if obj and obj.organic then
+        local id = (obj.baseObject or obj).id:lower()
         if config.blacklist[id] then return false end
         if config.whitelist[id] then return true end
-        return (ref.object.script == nil)
+        return (obj.script == nil)
     end
     return false
 end
