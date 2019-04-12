@@ -132,7 +132,7 @@ local function onActivate(e)
     -- transfer ingreds
     if #ref.object.inventory == 0 then
         tes3.messageBox("You failed to harvest anything of value.")
-        tes3.playSound{reference=ref, sound="Item Ammo Down", volume=(config.volume * 0.01), pitch=0.9}
+        tes3.playSound{reference=ref, sound="Item Ammo Down", volume=config.volume, pitch=0.9}
         updateHerbalismSwitch(ref, 2)
     else
         for i, stack in pairs(ref.object.inventory) do
@@ -142,7 +142,7 @@ local function onActivate(e)
                 tes3.transferItem{from=ref, to=tes3.player, item=stack.object, count=stack.count, playSound=false}
             end
         end
-        tes3.playSound{reference=ref, sound="Item Ingredient Up", volume=(config.volume * 0.01), pitch=1.0}
+        tes3.playSound{reference=ref, sound="Item Ingredient Up", volume=config.volume, pitch=1.0}
         updateHerbalismSwitch(ref, 1)
     end
 

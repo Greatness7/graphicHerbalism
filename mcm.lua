@@ -16,9 +16,18 @@ local function getHerbalismObjects()
     return list
 end
 
-local function setSliderLabelAsPercentage(self)
+local function showVolumeAsPercentage(self)
     self.elements.sliderValueLabel.text = (": " .. self.elements.slider.widget.current + self.min .. "%")
 end
+
+local function getVolumeAsInteger(self)
+    return math.round(config.volume * 100)
+end
+
+local function setVolumeAsDecimal(self, value)
+    config.volume = math.round(value / 100, 2)
+end
+
 
 return {
     name = "Graphic Herbalism",
@@ -52,12 +61,12 @@ return {
                             class = "Slider",
                             description = "Pick Volume Description",
                             variable = {
-                                id = "volume",
-                                class = "TableVariable",
-                                table = config,
+                                class = "Variable",
+                                get = getVolumeAsInteger,
+                                set = setVolumeAsDecimal,
                             },
-                            postCreate = setSliderLabelAsPercentage,
-                            updateValueLabel = setSliderLabelAsPercentage,
+                            postCreate = showVolumeAsPercentage,
+                            updateValueLabel = showVolumeAsPercentage,
                         },
                     },
                 },
