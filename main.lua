@@ -150,6 +150,9 @@ local function onActivate(e)
     -- detect if stolen
     reportTheft(ref, value)
 
+    -- apply empty flag
+    ref.isEmpty = true
+
     -- claim this event
     return false
 end
