@@ -99,20 +99,6 @@ event.register("calcRestInterrupt", onCellChanged)
 event.register("loaded", function() currentCells = {}; onCellChanged() end)
 
 
--- Called when picking a herb, trigger theft if necessary.
-local function reportTheft(ref, value)
-    local owner = tes3.getOwner(ref)
-    if not owner then return end
-
-    local rank = owner.playerJoined and owner.playerRank
-    if rank and (rank >= ref.attachments.variables.requirement) then
-        return
-    end
-
-    tes3.triggerCrime{type=tes3.crimeType.theft, victim=owner, value=value}
-end
-
-
 -- Called when activating a herb, loot all contents and update switch node.
 local function onActivate(e)
     local ref = e.target
@@ -146,8 +132,10 @@ local function onActivate(e)
         updateHerbalismSwitch(ref, 1)
     end
 
-    -- detect if stolen
-    reportTheft(ref, value)
+    -- handle ownership
+    if not tes3.hasOwnershipAccess{target=ref} then
+        tes3.triggerCrime{type=tes3.crimeType.theft, victim=tes3.getOwner(ref), value=value}
+    end
 
     -- apply empty flag
     ref.isEmpty = true
