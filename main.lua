@@ -120,14 +120,18 @@ local function onActivate(e)
 
     -- transfer ingreds
     if #ref.object.inventory == 0 then
-        tes3.messageBox(interop.getFailureString(ref.baseObject))
+        if config.showPickedMessage then
+            tes3.messageBox(interop.getFailureString(ref.baseObject))
+        end
         tes3.playSound{reference=ref, sound="Item Ammo Down", volume=config.volume, pitch=0.9}
         updateHerbalismSwitch(ref, 2)
     else
         for i, stack in pairs(ref.object.inventory) do
             if stack.object.canCarry ~= false then
+                if config.showPickedMessage then
+                    tes3.messageBox(interop.getSuccessString(ref.baseObject, stack.object, stack.count))
+                end
                 value = value + (stack.object.value * stack.count)
-                tes3.messageBox(interop.getSuccessString(ref.baseObject, stack.object, stack.count))
                 tes3.transferItem{from=ref, to=tes3.player, item=stack.object, count=stack.count, playSound=false}
             end
         end

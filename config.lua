@@ -1,5 +1,6 @@
 return mwse.loadConfig("graphicHerbalism") or {
     volume = 1.0,
+    showPickedMessage = true,
     showTooltips = true,
     blacklist = {
         -- vanilla content
