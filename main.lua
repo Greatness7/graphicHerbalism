@@ -21,6 +21,12 @@ local quickloot = include("QuickLoot.interop") or {}
 mwse.log("[Graphic Herbalism] Initialized Version 1.0")
 
 
+-- Register the mod config menu (using EasyMCM library).
+event.register("modConfigReady", function()
+    require("graphicHerbalism.mcm")
+end)
+
+
 -- Register the GUI IDs for our custom tooltips feature.
 local GUI_ID = {}
 event.register("initialized", function()
@@ -260,29 +266,6 @@ end
 event.register("uiObjectTooltip", onTooltipDrawn, {priority=200})
 
 
--- Create a placeholder MCM page if the user doesn't have easyMCM installed.
-local function placeholderMCM(element)
-    element:createLabel{text="This mod requires the EasyMCM library to be installed."}
-    local link = element:createTextSelect{text="Go to EasyMCM Nexus Page"}
-    link.color = tes3ui.getPalette("link_color")
-    link.widget.idle = tes3ui.getPalette("link_color")
-    link.widget.over = tes3ui.getPalette("link_over_color")
-    link.widget.pressed = tes3ui.getPalette("link_pressed_color")
-    link:register("mouseClick", function()
-        os.execute("start https://www.nexusmods.com/morrowind/mods/46427?tab=files")
-    end)
-end
-
-
-local function registerModConfig()
-    local easyMCM = include("easyMCM.modConfig")
-    local mcmData = require("graphicHerbalism.mcm")
-    local modData = easyMCM and easyMCM.registerModData(mcmData)
-    mwse.registerModConfig(mcmData.name, modData or {onCreate=placeholderMCM})
-end
-event.register("modConfigReady", registerModConfig)
-
-
 -- Autodetect blacklist candidates. Not perfect, but is better than nothing.
 local function updateBlacklist()
     for obj in tes3.iterateObjects(tes3.objectType.container) do
@@ -312,4 +295,3 @@ local function updateBlacklist()
     end
 end
 event.register("initialized", updateBlacklist)
-
