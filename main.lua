@@ -301,15 +301,21 @@ local function updateBlacklist()
             )
         then
             if (id:find("barrel")
+                or id:find("basket")
+                or id:find("box")
                 or id:find("chest")
                 or id:find("crate")
+                or id:find("nom_")
                 or id:find("sack")
-                or getIngredients(obj.inventory)() == nil)
+                or id:find("trader")
+                or getIngredients(obj.inventory)() == nil
+                )
             then
-                mwse.log('[Graphic Herbalism] Invalid container "%s" added to blacklist.', id)
+                mwse.log('[Graphic Herbalism] Container "%s" added to blacklist.', id)
                 config.blacklist[id] = true
             end
         end
     end
 end
 event.register("initialized", updateBlacklist)
+
