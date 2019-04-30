@@ -48,6 +48,8 @@ end
 
 -- Update and serialize the reference's HerbalismSwitch.
 local function updateHerbalismSwitch(ref, index)
+    -- valid indices are: 0=default, 1=picked, 2=spoiled
+
     local sceneNode = ref.sceneNode
     if not sceneNode then return end
 
