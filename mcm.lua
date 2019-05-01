@@ -1,9 +1,9 @@
 local EasyMCM = include("easyMCM.EasyMCM")
 
 -- Create a placeholder page if EasyMCM is not installed.
-if (EasyMCM == nil) or (EasyMCM.version < 1.2) then
+if (EasyMCM == nil) or (EasyMCM.version < 1.4) then
     local function placeholderMCM(element)
-        element:createLabel{text="This mod config menu requires EasyMCM v1.2 or later."}
+        element:createLabel{text="This mod config menu requires EasyMCM v1.4 or later."}
         local link = element:createTextSelect{text="Go to EasyMCM Nexus Page"}
         link.color = tes3ui.getPalette("link_color")
         link.widget.idle = tes3ui.getPalette("link_color")
