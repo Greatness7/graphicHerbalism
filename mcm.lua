@@ -57,28 +57,60 @@ preferences.sidebar:createInfo{text="MWSE Graphic Herbalism Version 1.0"}
 -- Sidebar Credits
 local credits = preferences.sidebar:createCategory{label="Credits:"}
 credits:createHyperlink{
-    text = "Greatness7",
+    text = "Greatness7 - Scripting",
     exec = "start https://www.nexusmods.com/morrowind/users/64030?tab=user+files",
 }
 credits:createHyperlink{
-    text = "Merlord",
+    text = "Merlord - MCM Support",
     exec = "start https://www.nexusmods.com/morrowind/users/3040468?tab=user+files",
 }
 credits:createHyperlink{
-    text = "NullCascade",
+    text = "NullCascade - MWSE Support",
     exec = "start https://www.nexusmods.com/morrowind/users/26153919?tab=user+files",
 }
 credits:createHyperlink{
-    text = "Petethegoat",
+    text = "Petethegoat - Script Help and Feedback",
     exec = "start https://www.nexusmods.com/morrowind/users/25319994?tab=user+files",
 }
 credits:createHyperlink{
-    text = "Remiros",
+    text = "Remiros - MOP Meshes",
     exec = "start https://www.nexusmods.com/morrowind/users/899234?tab=user+files",
 }
 credits:createHyperlink{
-    text = "Stuporstar",
+    text = "Stuporstar - Mesh Conversion and Smoothing",
     exec = "start http://stuporstar.sarahdimento.com/",
+}
+credits:createHyperlink{
+    text = "Sveng - Feedback and Playtesting",
+    exec = "start https://www.nexusmods.com/morrowind/users/1121630?tab=user+files",
+}
+credits:createHyperlink{
+    text = "Gruntella - Graphic Herbalism Univeral Textures",
+    exec = "start https://www.nexusmods.com/morrowind/users/2356095?tab=user+files",
+}
+credits:createHyperlink{
+    text = "Skrawafunda and Manauser - Original Graphic Herbalism Textures",
+    exec = "start https://www.nexusmods.com/morrowind/users/13100210?tab=user+files",
+}
+credits:createHyperlink{
+    text = "Moranar - Smoothed Meshes",
+    exec = "start https://www.nexusmods.com/morrowind/users/6676263?tab=user+files",
+}
+credits:createHyperlink{
+    text = "Tyddy - Smoothed Meshes",
+    exec = "start https://www.nexusmods.com/morrowind/users/3281858?tab=user+files",
+}
+credits:createHyperlink{
+    text = "Articus - Mesh Help and Feedback",
+    exec = "start https://www.nexusmods.com/morrowind/users/51799631?tab=user+files",
+}
+credits:createHyperlink{
+    text = "DassiD - Texture Upscaling",
+    exec = "start https://www.nexusmods.com/morrowind/users/6344059?tab=user+files",
+}
+credits:createHyperlink{
+    text = "Nich and CJW-Craigor - Diverse Correct UV Ore",
+    exec = "start http://mw.modhistory.com/download-1-13484",
 }
 
 -- Feature Toggles

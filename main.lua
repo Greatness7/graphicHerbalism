@@ -4,7 +4,7 @@
 --]]
 
 -- Make sure we have an up-to-date version of MWSE.
-if (mwse.buildDate == nil) or (mwse.buildDate < 20190430) then
+if (mwse.buildDate == nil) or (mwse.buildDate < 20190501) then
     event.register("initialized", function()
         tes3.messageBox(
             "[Graphic Herbalism] Your MWSE is out of date!"
