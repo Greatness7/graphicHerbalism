@@ -21,6 +21,22 @@ local quickloot = include("QuickLoot.interop") or {}
 mwse.log("[Graphic Herbalism] Initialized Version 1.0")
 
 
+-- Make sure QuickLoot is up to date if it is installed.
+if (quickloot.version == nil) or (quickloot.version < 1.3) then
+    -- old versions had no interop, manually check for main.lua
+    local path = "\\Data Files\\MWSE\\mods\\QuickLoot\\main.lua"
+    local mode = lfs.attributes(lfs.currentdir() .. path, "mode")
+    if mode == "file" then
+        event.register("initialized", function()
+            tes3.messageBox(
+                "[Graphic Herbalism] Your QuickLoot is out of date!"
+                .. " Version 1.3 or higher is needed for compatiblity with this mod."
+            )
+        end)
+    end
+end
+
+
 -- Register the mod config menu (using EasyMCM library).
 event.register("modConfigReady", function()
     require("graphicHerbalism.mcm")
