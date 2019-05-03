@@ -167,6 +167,8 @@ local function onActivate(e)
     end
 
     -- apply empty flag
+    ref.object.modified = false
+    ref.object:onInventoryClose(ref)
     ref.isEmpty = true
 
     -- claim this event
