@@ -147,6 +147,8 @@ controls:createSlider{
 template:createExclusionsPage{
     label = "Blacklist",
     description = "All organic containers are treated like flora. Guild chests are blacklisted by default, as are several TR containers. Others can be added manually in this menu.",
+    leftListLabel = "Blacklist",
+    rightListLabel = "Objects",
     variable = EasyMCM:createTableVariable{
         id = "blacklist",
         table = config,
@@ -160,6 +162,8 @@ template:createExclusionsPage{
 template:createExclusionsPage{
     label = "Whitelist",
     description = "Scripted containers are automatically skipped, but can be enabled in this menu. Containers altered by Piratelord's Expanded Sounds are whitelisted by default. Be careful about whitelisting containers using OnActivate, as that can break their scripts.",
+    leftListLabel = "Whitelist",
+    rightListLabel = "Objects",
     variable = EasyMCM:createTableVariable{
         id = "whitelist",
         table = config,
