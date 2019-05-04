@@ -18,7 +18,7 @@ end
 local config = require("graphicHerbalism.config")
 local interop = require("graphicHerbalism.interop")
 local quickloot = include("QuickLoot.interop") or {}
-mwse.log("[Graphic Herbalism] Initialized Version 1.0")
+mwse.log("[Graphic Herbalism] Initialized Version 1.03")
 
 
 -- Make sure QuickLoot is up to date if it is installed.

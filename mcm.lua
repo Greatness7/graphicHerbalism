@@ -52,7 +52,7 @@ template:register()
 
 -- Preferences Page
 local preferences = template:createSideBarPage{label="Preferences"}
-preferences.sidebar:createInfo{text="MWSE Graphic Herbalism Version 1.0"}
+preferences.sidebar:createInfo{text="MWSE Graphic Herbalism Version 1.03"}
 
 -- Sidebar Credits
 local credits = preferences.sidebar:createCategory{label="Credits:"}
