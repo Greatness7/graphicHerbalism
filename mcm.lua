@@ -1,28 +1,8 @@
-local EasyMCM = include("easyMCM.EasyMCM")
-
--- Create a placeholder page if EasyMCM is not installed.
-if (EasyMCM == nil) or (EasyMCM.version < 1.4) then
-    local function placeholderMCM(element)
-        element:createLabel{text="This mod config menu requires EasyMCM v1.4 or later."}
-        local link = element:createTextSelect{text="Go to EasyMCM Nexus Page"}
-        link.color = tes3ui.getPalette("link_color")
-        link.widget.idle = tes3ui.getPalette("link_color")
-        link.widget.over = tes3ui.getPalette("link_over_color")
-        link.widget.pressed = tes3ui.getPalette("link_pressed_color")
-        link:register("mouseClick", function()
-            os.execute("start https://www.nexusmods.com/morrowind/mods/46427?tab=files")
-        end)
-    end
-    mwse.registerModConfig("Graphic Herbalism", {onCreate=placeholderMCM})
-    return
-end
-
+local config = require("graphicHerbalism.config")
 
 -------------------
 -- Utility Funcs --
 -------------------
-local config = require("graphicHerbalism.config")
-
 local function getHerbalismObjects()
     local list = {}
     for obj in tes3.iterateObjects(tes3.objectType.container) do
@@ -44,9 +24,9 @@ end
 
 
 ----------------------
--- EasyMCM Template --
+-- mwse.mcm Template --
 ----------------------
-local template = EasyMCM.createTemplate{name="Graphic Herbalism"}
+local template = mwse.mcm.createTemplate{name="Graphic Herbalism"}
 template:saveOnClose("graphicHerbalism", config)
 template:register()
 
@@ -118,7 +98,7 @@ local toggles = preferences:createCategory{label="Feature Toggles"}
 toggles:createOnOffButton{
     label = "Show ingredient tooltips",
     description = "Show ingredient tooltips\n\nThis option controls whether or not ingredient tooltips will be shown when targeting a valid herbalism container.\n\nDefault: On\n\n",
-    variable = EasyMCM:createTableVariable{
+    variable = mwse.mcm:createTableVariable{
         id = "showTooltips",
         table = config,
     },
@@ -126,7 +106,7 @@ toggles:createOnOffButton{
 toggles:createOnOffButton{
     label = "Show picked message",
     description = "Show picked messagebox\n\nThis option controls whether or not picked messagebox will be shown after activating a herbalism container.\n\nDefault: On\n\n",
-    variable = EasyMCM:createTableVariable{
+    variable = mwse.mcm:createTableVariable{
         id = "showPickedMessage",
         table = config,
     },
@@ -137,7 +117,7 @@ local controls = preferences:createCategory{label="Feature Controls"}
 controls:createSlider{
     label = "Pick Volume: %s%%",
     description = "Pick Volume Description",
-    variable = EasyMCM:createVariable{
+    variable = mwse.mcm:createVariable{
         get = getVolumeAsInteger,
         set = setVolumeAsDecimal,
     },
@@ -149,7 +129,7 @@ template:createExclusionsPage{
     description = "All organic containers are treated like flora. Guild chests are blacklisted by default, as are several TR containers. Others can be added manually in this menu.",
     leftListLabel = "Blacklist",
     rightListLabel = "Objects",
-    variable = EasyMCM:createTableVariable{
+    variable = mwse.mcm:createTableVariable{
         id = "blacklist",
         table = config,
     },
@@ -164,7 +144,7 @@ template:createExclusionsPage{
     description = "Scripted containers are automatically skipped, but can be enabled in this menu. Containers altered by Piratelord's Expanded Sounds are whitelisted by default. Be careful about whitelisting containers using OnActivate, as that can break their scripts.",
     leftListLabel = "Whitelist",
     rightListLabel = "Objects",
-    variable = EasyMCM:createTableVariable{
+    variable = mwse.mcm:createTableVariable{
         id = "whitelist",
         table = config,
     },
