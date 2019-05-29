@@ -22,10 +22,9 @@ local function setVolumeAsDecimal(self, value)
     config.volume = math.round(value / 100, 2)
 end
 
-
-----------------------
--- mwse.mcm Template --
-----------------------
+------------------
+-- MCM Template --
+------------------
 local template = mwse.mcm.createTemplate{name="Graphic Herbalism"}
 template:saveOnClose("graphicHerbalism", config)
 template:register()
