@@ -37,9 +37,9 @@ if (quickloot.version == nil) or (quickloot.version < 1.3) then
 end
 
 
--- Register the mod config menu (using EasyMCM library).
+-- Register the mod config menu (using bultin mwse.mcm).
 event.register("modConfigReady", function()
-    require("graphicHerbalism.mcm")
+    dofile("Data Files\\MWSE\\mods\\graphicHerbalism\\mcm.lua")
 end)
 
 
